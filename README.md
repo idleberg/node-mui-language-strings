@@ -2,8 +2,8 @@
 
 [![npm](https://flat.badgen.net/npm/license/@nsis/mui-language-strings)](https://www.npmjs.org/package/@nsis/mui-language-strings)
 [![npm](https://flat.badgen.net/npm/v/@nsis/mui-language-strings)](https://www.npmjs.org/package/@nsis/mui-language-strings)
-[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/mui-language-strings)](https://circleci.com/gh/idleberg/mui-language-strings)
-[![David](https://flat.badgen.net/david/dev/idleberg/mui-language-strings)](https://david-dm.org/idleberg/mui-language-strings?type=dev)
+[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/node-mui-language-strings)](https://circleci.com/gh/idleberg/node-mui-language-strings)
+[![David](https://flat.badgen.net/david/dev/idleberg/node-mui-language-strings)](https://david-dm.org/idleberg/node-mui-language-strings?type=dev)
 
 Parser for NSIS Modern UI language headers
 
@@ -64,4 +64,4 @@ This work is licensed under [The MIT License](https://opensource.org/licenses/MI
 
 ## Donate
 
-You are welcome to support this project using [Flattr](https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/mui-language-strings) or Bitcoin `17CXJuPsmhuTzFV2k4RKYwpEHVjskJktRd`
+You are welcome to support this project using [Flattr](https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/node-mui-language-strings) or Bitcoin `17CXJuPsmhuTzFV2k4RKYwpEHVjskJktRd`
