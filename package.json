@@ -1,6 +1,6 @@
 {
   "name": "@nsis/mui-language-strings",
-  "version": "0.50.0",
+  "version": "0.1.0",
   "description": "Parser for NSIS Modern UI language headers",
   "license": "MIT",
   "scripts": {
