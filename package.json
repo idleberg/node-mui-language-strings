@@ -7,7 +7,7 @@
     "build": "tsc --project ./",
     "lint": "tslint --project .",
     "precommit": "npm run lint",
-    "test": "npx ava ./test/default.js --verbose"
+    "test": "npm run lint"
   },
   "main": "dist/index.js",
   "repository": {
