@@ -38,7 +38,7 @@ const languageObj = parse(languageFile);
 
 Usage: `parse(string, options)`
 
-Parses an NSIS Language File, constructing an object or JSON string that's easy to query
+Parses an NSIS Modern UI language header, constructing an object or JSON string that's easy to query
 
 ##### options.stringify
 
@@ -51,12 +51,6 @@ Return a stringified object
 Type: `boolean`
 
 Minifies a stringified object, requires `options.stringify` to be `true`
-
-#### stringify
-
-Usage: `stringify(Object|string)`
-
-Converts an NSIS Language File object or JSON string to an `.nlf` string
 
 ## License
 
