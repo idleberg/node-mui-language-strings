@@ -10,6 +10,7 @@ const parse = (input: string, options: ParserOptions = {}): Object|string => {
     const lines = input.split('\n');
 
     lines.forEach( (line, index) => {
+        line = line.replace(/(#.*)$/mg, '');
         line = line.trim();
 
         if (line.startsWith('${LangFileString}')) {

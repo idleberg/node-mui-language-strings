@@ -11,6 +11,7 @@ var parse = function (input, options) {
     try {
         var lines = input.split('\n');
         lines.forEach(function (line, index) {
+            line = line.replace(/(#.*)$/mg, '');
             line = line.trim();
             if (line.startsWith('${LangFileString}')) {
                 var re = /^\${LangFileString}\s*(?<key>\w+)\s*\"(?<value>.*)\"$/;
