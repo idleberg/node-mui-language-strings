@@ -40,12 +40,11 @@ Usage: `parse(string, options)`
 
 Parses an NSIS Modern UI language header, constructing an object or JSON string that's easy to query
 
-
 ##### options.looseQuotes
 
 Type: `boolean`
 
-Ignores leading and trailing quotes of a language string
+Ignores leading and trailing quotes of a language string. This option is useful to parse the Hindi language, which currently lacks one trailing quote.
 
 ##### options.minify
 
