@@ -13,6 +13,7 @@ interface FontSettings {
 }
 
 interface ParserOptions {
+  looseQuotes?: boolean;
   minify?: boolean;
   stringify?: boolean;
 }

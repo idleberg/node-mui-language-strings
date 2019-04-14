@@ -40,17 +40,24 @@ Usage: `parse(string, options)`
 
 Parses an NSIS Modern UI language header, constructing an object or JSON string that's easy to query
 
-##### options.stringify
+
+##### options.looseQuotes
 
 Type: `boolean`
 
-Return a stringified object
+Ignores leading and trailing quotes of a language string
 
 ##### options.minify
 
 Type: `boolean`
 
 Minifies a stringified object, requires `options.stringify` to be `true`
+
+##### options.stringify
+
+Type: `boolean`
+
+Return a stringified object
 
 ## License
 

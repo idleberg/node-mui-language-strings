@@ -34,7 +34,7 @@ var parse = function (input, options) {
                 output['nativeASCII'] = matches_1[3];
             }
             if (line.startsWith('${LangFileString}')) {
-                var re = /^\${LangFileString}\s*(?<key>\w+)\s*\"(?<value>.*)\"$/;
+                var re = (options.looseQuotes) ? /^\${LangFileString}\s*(?<key>\w+)\s*\"?(?<value>.*)\"?$/ : /^\${LangFileString}\s*(?<key>\w+)\s*\"(?<value>.*)\"$/;
                 // @ts-ignore
                 var groups = re.exec(line).groups;
                 output.strings[groups.key] = groups.value;

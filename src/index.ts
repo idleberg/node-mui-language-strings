@@ -38,7 +38,7 @@ const parse = (input: string, options: ParserOptions = {}): Object|string => {
         }
 
         if (line.startsWith('${LangFileString}')) {
-            const re = /^\${LangFileString}\s*(?<key>\w+)\s*\"(?<value>.*)\"$/;
+            const re = (options.looseQuotes) ? /^\${LangFileString}\s*(?<key>\w+)\s*\"?(?<value>.*)\"?$/ : /^\${LangFileString}\s*(?<key>\w+)\s*\"(?<value>.*)\"$/;
             // @ts-ignore
             const { groups } = re.exec(line);
 
