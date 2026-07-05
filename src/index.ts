@@ -32,6 +32,7 @@ function parse(input: string, options: ParserOptions = {}): MUILanguageFile | st
       output.nativeASCII = values[3] ?? null;
     }
 
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: Valid NSIS template string, not a template literal
     if (stripped.startsWith('${LangFileString}')) {
       const re = options.looseQuotes
         ? /^\${LangFileString}\s*(?<key>\w+)\s*"?(?<value>.*)"?$/
