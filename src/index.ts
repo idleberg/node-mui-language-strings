@@ -1,10 +1,9 @@
-/**
- * Parses an NSIS Modern UI language header string
- * @param input - MUI string
- * @returns - MUI object
- */
-const parse = (input: string, options: ParserOptions = {}): Object|string => {
-  let output: any = {
+import type { MUILanguageFile, ParserOptions } from './types.ts';
+
+function parse(input: string, options: ParserOptions & { stringify: true }): string;
+function parse(input: string, options?: ParserOptions): MUILanguageFile;
+function parse(input: string, options: ParserOptions = {}): MUILanguageFile | string {
+  const output: MUILanguageFile = {
     file: null,
     english: null,
     native: null,
@@ -12,49 +11,48 @@ const parse = (input: string, options: ParserOptions = {}): Object|string => {
     strings: {}
   };
 
-  try {
-    const lines = input.split('\n');
+  const lines = input.split('\n');
 
-    lines.forEach( (line, index) => {
-        line = line.replace(/(#.*)$/mg, '');
-        line = line.trim();
+  for (const line of lines) {
+    const stripped = line.replace(/(#.*)$/mg, '').trim();
 
-        if (line.startsWith('!insertmacro LANGFILE')) {
-          let matches = line.match(/"[^"]*"|=/g);
+    if (stripped.startsWith('!insertmacro LANGFILE')) {
+      const matches = stripped.match(/"[^"]*"|=/g);
+      if (!matches) continue;
 
-          matches.forEach( (match, index) => {
-            // Strip quotes
-            matches[index] = match.replace(/^"/, '').replace(/"$/, '');
+      const values: string[] = [];
+      for (const [i, m] of matches.entries()) {
+        const unquoted = m.replace(/^"/, '').replace(/"$/, '');
+        values.push(m === '=' ? (values[i - 1] ?? '') : unquoted);
+      }
 
-            if (match === '=') {
-              matches[index] = matches[index - 1];
-            }
-          });
+      output.file = values[0] ?? null;
+      output.english = values[1] ?? null;
+      output.native = values[2] ?? null;
+      output.nativeASCII = values[3] ?? null;
+    }
 
-          output['file'] = matches[0];
-          output['english'] = matches[1];
-          output['native'] = matches[2];
-          output['nativeASCII'] = matches[3];
-        }
+    if (stripped.startsWith('${LangFileString}')) {
+      const re = options.looseQuotes
+        ? /^\${LangFileString}\s*(?<key>\w+)\s*"?(?<value>.*)"?$/
+        : /^\${LangFileString}\s*(?<key>\w+)\s*"(?<value>.*)"$/;
+      const result = re.exec(stripped);
+      if (!result?.groups) continue;
 
-        if (line.startsWith('${LangFileString}')) {
-            const re = (options.looseQuotes) ? /^\${LangFileString}\s*(?<key>\w+)\s*\"?(?<value>.*)\"?$/ : /^\${LangFileString}\s*(?<key>\w+)\s*\"(?<value>.*)\"$/;
-            // @ts-ignore
-            const { groups } = re.exec(line);
-
-            output.strings[groups.key] = groups.value;
-        }
-    });
-  } catch (e) {
-    throw e;
+      const { key, value } = result.groups;
+      if (key && value !== undefined) {
+        output.strings[key] = value;
+      }
+    }
   }
 
   if (options.stringify === true) {
-    const indentation: number = (options.minify === true) ? 0 : 2;
+    const indentation: number = options.minify === true ? 0 : 2;
     return JSON.stringify(output, null, indentation);
   }
 
   return output;
-};
+}
 
+export type { MUILanguageFile, ParserOptions } from './types.ts';
 export { parse };
