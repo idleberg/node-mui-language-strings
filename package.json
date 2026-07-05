@@ -1,34 +1,39 @@
 {
-  "name": "@nsis/mui-language-strings",
-  "version": "0.3.0",
-  "description": "Parser for NSIS Modern UI language headers",
-  "license": "MIT",
-  "scripts": {
-    "build": "tsc --pretty --project ./",
-    "dev": "tsc --watch --pretty --project ./",
-    "lint": "tslint --project .",
-    "test": "npm run lint"
-  },
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/idleberg/node-mui-language-strings.git"
-  },
-  "keywords": [
-    "nsis",
-    "modern ui",
-    "mui",
-    "parser"
-  ],
-  "devDependencies": {
-    "@types/node": "^11.13.4",
-    "husky": "^1.3.1",
-    "tslint": "^5.15.0",
-    "typescript": "^3.4.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  }
+	"name": "@nsis/mui-language-strings",
+	"version": "0.3.0",
+	"description": "Parser for NSIS Modern UI language headers",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"lint": "biome check",
+		"lint:ci": "biome ci",
+		"prepack": "npm run build",
+		"test": "vitest run"
+	},
+	"type": "module",
+	"exports": "./dist/index.mjs",
+	"typings": "./dist/index.d.mts",
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/idleberg/node-mui-language-strings.git"
+	},
+	"keywords": [
+		"nsis",
+		"modern ui",
+		"mui",
+		"parser"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "^2.0.0",
+		"@idleberg/configs": "^0.4.6",
+		"@types/node": "^24.13.1",
+		"tsdown": "^0.22.3",
+		"typescript": "^6.0.3",
+		"vitest": "^3.2.0"
+	},
+	"packageManager": "pnpm@11.10.0+sha512.0b7f8b98060031904c017e3a41eb187a16d40eeb829b95c4f8cb03681761fc4ab53dd219115b9b447f4dce1a05a214764461e7d3703392a9f32f9511ce8c86c8"
 }
